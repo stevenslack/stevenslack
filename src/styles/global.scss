@@ -5,14 +5,14 @@
  */
 body {
 	font-family: Verdana, sans-serif;
+	font-size: 16px;
 	margin: auto;
 	padding: 20px;
-	max-width: 65ch;
 	text-align: left;
 	background-color: #fff;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	line-height: 1.5;
+	line-height: 1.6;
 	color: #444;
 }
 h1,
@@ -64,4 +64,20 @@ blockquote {
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 	font-style: italic;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 65ch;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.hero {
+	font-size: 1.2rem;
+
+	@media (min-width: 48rem) {
+		font-size: 1.6rem;
+	}
 }
