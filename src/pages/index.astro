@@ -1,6 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
+import Social from '../components/Social.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
@@ -15,9 +16,12 @@ import '../styles/main.scss';
 	<body>
 		<main class="container">
 			<section class="hero">
-				<div class="title-wrapper">
+				<div class="heading-wrapper">
 					<img alt="" src="/profile-pic-black-white-2.png" alt="profile photo of Steven Slack" height="150" width="150" loading="lazy">
-					<h1 class="title main-heading">Steven Slack</h1>
+					<div class="heading">
+						<h1 class="main-heading">Steven Slack</h1>
+						<h2>Software Engineer</h2>
+					</div>
 				</div>
 				<p>
 					Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
@@ -26,7 +30,10 @@ import '../styles/main.scss';
 				</p>
 			</section>
 			<hr>
-			<section class="content">
+			<section>
+				<Social />
+			</section>
+			<section>
 				<p>
 					This template comes with a few integrations already configured in your
 					<code>astro.config.mjs</code> file. You can customize your setup with
