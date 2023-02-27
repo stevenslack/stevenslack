@@ -1,0 +1,95 @@
+
+.graph-container {
+  margin: 0 auto;
+}
+
+.graph-title {
+  text-align: center;
+}
+
+#pe-graph {
+  margin: 0 auto 20px;
+  max-width: 1280px;
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+#pe-graph svg {
+  overflow: visible;
+}
+
+/* Vertical drop line */
+.pe-graph__drop-line,
+.pe-graph__tooltip-circle {
+  opacity: 0;
+}
+
+.pe-graph__drop-line {
+  fill: #666;
+}
+
+.pe-graph__avg-line {
+  stroke: #666;
+}
+
+.pe-graph__tooltip {
+  width: 220px;
+  height: 110px;
+  opacity: 0;
+}
+
+/* Tooltip styles */
+.tooltip {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  font-size: 0.9em;
+  left: 0;
+  line-height: 1.4em;
+  padding: 0.6em 1em;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  transition: all 0.1s ease-out;
+  z-index: 10;
+}
+
+.tooltip:before {
+  background: white;
+  border: 1px solid #ddd;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  bottom: 0;
+  content: "";
+  height: 12px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 50%) rotate(45deg);
+  transform-origin: center center;
+  width: 12px;
+  z-index: 10;
+}
+
+.data-display--box {
+  margin: 50px auto 0;
+  max-width: 300px;
+}
+
+.data-display--box-table {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.data-display dl {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+  text-align: left;
+}
+
+.data-display dd {
+  font-weight: 700;
+  margin-left: 10px;
+}

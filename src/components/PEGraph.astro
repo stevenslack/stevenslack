@@ -1,0 +1,64 @@
+---
+import './PEGraph/styles.css';
+---
+<script>
+	import renderChartAtBreakpoints from "./PEGraph/renderChartAtBreakpoints";
+	
+	// Render the chart.
+	renderChartAtBreakpoints([
+	  1000,
+	  900,
+	  800,
+	  700,
+	  600,
+	  500,
+	]);
+</script>
+
+<div class="graph-container">
+	<h3 class="graph-title">Home Price to Earnings Ratio for Asheville North Carolina</h3>
+	<div id="pe-graph">
+		<svg class="pe-graph__svg">
+			<g><rect class="pe-graph__drop-line" stroke-width="1px" width=".5px"></rect></g>
+			<circle class="pe-graph__tooltip-circle" r="4" stroke="#af9358" fill="white" stroke-width="2"></circle>
+			<g style="stroke: rgb(102, 102, 102);">
+				<line class="pe-graph__avg-line" stroke-dasharray="20 10" x1="0"></line>
+				<text class="pe-graph__avg-line-label" fill="currentColor"></text>
+			</g>
+			<g class="pe-graph__y-axis" fill="none" font-size="10" font-family="sans-serif" text-anchor="end">
+				<text class="pe-graph__y-axis-label" fill="currentColor" style="transform: rotate(-90deg); font-size: 16px;">P/E Ratio</text>
+			</g>
+			<g class="pe-graph__x-axis" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle">
+				<path class="domain" stroke="currentColor"></path>
+				<text class="pe-graph__x-axis-label" fill="currentColor" style="font-size: 16px;">Year</text>
+			</g>
+			<path class="pe-graph__pe-ratio-line" fill="none" stroke="steelblue"></path>
+			<foreignObject class="pe-graph__tooltip">
+				<div class="tooltip data-display">
+					<dl>
+						<dt>P / E Ratio:</dt>
+						<dd class="data-display__pe-ratio"></dd>
+						<dt>Date Range:</dt>
+						<dd class="data-display__date"></dd>
+						<dt>Median Wage:</dt>
+						<dd class="data-display__wage"></dd>
+						<dt>Home Price:</dt>
+						<dd class="data-display__home-price"></dd>
+					</dl>
+				</div>
+			</foreignObject>
+		</svg>
+	</div>
+	<div class="data-display data-display--box">
+		<dl class="data-display--box-table">
+			<dt>P / E Ratio:</dt>
+			<dd class="data-display__pe-ratio"></dd>
+			<dt>Date Range:</dt>
+			<dd class="data-display__date"></dd>
+			<dt>Median Wage:</dt>
+			<dd class="data-display__wage"></dd>
+			<dt>Home Price:</dt>
+			<dd class="data-display__home-price"></dd>
+		</dl>
+	</div>
+</div>
