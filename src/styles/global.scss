@@ -3,12 +3,49 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
-body {
+
+@import './light-mode';
+@import './dark-mode';
+
+:root {
   background-color: #fff;
   color: #444;
   font-family: Verdana, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.feather-sun {
+  opacity: 1;
+  transform: translateX(1.5rem);
+}
+
+.feather-moon {
+  opacity: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @include light-mode();
+  }
+}
+
+:root[data-theme='dark'] {
+  @include dark-mode();
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-mode();
+  }
+}
+
+:root[data-theme='light'] {
+  @include light-mode();
+}
+
+body {
   margin: auto;
   overflow-wrap: break-word;
   padding: 20px;
@@ -31,8 +68,8 @@ a {
   color: #3273dc;
 }
 
-nav a {
-  margin-right: 10px;
+button {
+  background-color: #f9f9f9;
 }
 
 textarea {
@@ -58,7 +95,6 @@ img {
 }
 
 code {
-  background-color: #f2f2f2;
   padding: 2px 5px;
 }
 
@@ -84,4 +120,16 @@ blockquote {
   max-width: 65ch;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.screen-reader-text {
+  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

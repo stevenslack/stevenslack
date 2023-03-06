@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import DarkLight from '../components/DarkLight.astro';
 import Social from '../components/Social.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
@@ -14,6 +15,7 @@ import '../styles/main.scss';
 	</head>
 	<body>
 		<main class="container">
+			<DarkLight />
 			<section class="hero">
 				<div class="heading-wrapper">
 					<img alt="" src="/profile-pic-black-white-2.png" alt="profile photo of Steven Slack" height="150" width="150" loading="lazy">
@@ -29,10 +31,10 @@ import '../styles/main.scss';
 				</p>
 			</section>
 			<hr>
-			<section>
+			<section class="social">
 				<Social />
 			</section>
-			<section>
+			<section class="content">
 				<p>
 					This template comes with a few integrations already configured in your
 					<code>astro.config.mjs</code> file. You can customize your setup with
@@ -63,3 +65,8 @@ import '../styles/main.scss';
 		<Footer />
 	</body>
 </html>
+<style>
+	.social {
+		margin-bottom: 3em;
+	}
+</style>

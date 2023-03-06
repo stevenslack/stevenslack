@@ -1,0 +1,25 @@
+@mixin light-mode() {
+  background-color: #fff;
+  color: #444;
+
+  a {
+    color: #3273dc;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+
+  .feather-sun {
+    opacity: 1;
+    transform: translateX(1.5rem);
+  }
+  
+  .feather-moon {
+    opacity: 0;
+  }
+
+  code {
+    background-color: #f2f2f2;
+  }
+}
