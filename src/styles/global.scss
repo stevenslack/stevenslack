@@ -16,6 +16,12 @@
   transition: background-color 0.1s ease-in-out;
 }
 
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
 .feather-sun {
   opacity: 1;
   transform: translateX(1.5rem);

@@ -211,7 +211,7 @@ export default function renderChart(width: number, height: number) {
         .style('opacity', 1)
         .style(
           'transform',
-          'translate(-110px, -120px)',
+          'translate(-118px, -120px)',
         );
 
       tooltipCircle
