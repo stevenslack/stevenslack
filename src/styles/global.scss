@@ -6,6 +6,7 @@
 
 @import './light-mode';
 @import './dark-mode';
+@import './mixins';
 
 :root {
   background-color: #fff;
@@ -14,6 +15,9 @@
   font-size: 16px;
   line-height: 1.6;
   transition: background-color 0.1s ease-in-out;
+
+  --light-mode-text: #444;
+  --dark-mode-text: rgba(255, 255, 255, 0.87);
 }
 
 .theme-toggle {
@@ -138,4 +142,8 @@ blockquote {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.gradient-text {
+  @include color-title();
 }

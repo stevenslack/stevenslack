@@ -1,0 +1,25 @@
+---
+import { SITE_TITLE } from '../consts';
+---
+
+<h2 class="site-heading gradient-text"><a href="/">{SITE_TITLE}</a></h2>
+
+<style>
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+	a.active {
+		font-weight: bolder;
+		text-decoration: underline;
+	}
+	.site-heading {
+		color: #bdbdbd;
+		font-size: 1.8rem;
+		margin-bottom: 0.8rem;
+
+		@media (min-width: 40rem) {
+			font-size: 3rem;
+		}
+	}
+</style>

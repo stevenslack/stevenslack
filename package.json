@@ -15,7 +15,7 @@
 		"test:watch": "jest src --watch"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^0.17.2",
+		"@astrojs/mdx": "^0.18.1",
 		"@astrojs/rss": "^2.1.1",
 		"@astrojs/sitemap": "^1.1.0",
 		"astro": "^2.0.15",
