@@ -1,0 +1,29 @@
+---
+const {
+	src,
+	alt = '',
+	caption = '',
+} = Astro.props;
+
+if (!src) {
+	return null;
+}
+---
+<figure>
+	<img src={src} width={720} height={360} alt={alt}>
+	{
+		caption &&
+			<figcaption>
+				{caption}
+			</figcaption>
+	}
+</figure>
+
+<style>
+	figure {
+		margin: 0;
+	}
+	figcaption {
+		font-size: 0.8rem;
+	}
+</style>

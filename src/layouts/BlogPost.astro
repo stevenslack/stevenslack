@@ -5,10 +5,18 @@ import Header from '../components/Header.astro';
 import DarkLight from '../components/DarkLight.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import ImageFigure from '../components/ImageFigure.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	heroImageCredit,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -26,6 +34,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			.heading {
+				margin-bottom: 1rem;
+			}
 		</style>
 	</head>
 
@@ -34,16 +45,24 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-				<h1 class="title">{title}</h1>
-				<FormattedDate date={pubDate} />
-				{
-					updatedDate && (
-						<div class="last-updated-on">
-							Last updated on <FormattedDate date={updatedDate} />
-						</div>
-					)
-				}
+				<div class="heading">
+					<h1 class="title">{title}</h1>
+					<FormattedDate date={pubDate} />
+					{
+						updatedDate && (
+							<div class="last-updated-on">
+								Last updated on <FormattedDate date={updatedDate} />
+							</div>
+						)
+					}
+				</div>
+				{heroImage && (
+					<ImageFigure
+						src={heroImage}
+						alt={heroImageCredit}
+						caption={heroImageCredit}
+					/>
+				)}
 				<hr />
 				<slot />
 			</article>
