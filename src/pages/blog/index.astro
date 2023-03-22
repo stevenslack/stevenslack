@@ -10,7 +10,6 @@ import FormattedDate from '../../components/FormattedDate.astro';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
-console.log(posts);
 ---
 
 <!DOCTYPE html>
