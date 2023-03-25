@@ -44,7 +44,14 @@
     border-radius: 3px;
   }
 
-  .linkedin-logo,
+  .linkedin-logo {
+    fill: #444;
+  }
+
+  .linkedin-bg {
+    fill: #bdbdbd;
+  }
+
   .instagram-icon path,
   .github-icon path {
     fill: #bdbdbd;

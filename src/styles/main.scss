@@ -87,6 +87,12 @@
   }
 }
 
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
 hr {
   background: #ccc;
   border-radius: 3px;

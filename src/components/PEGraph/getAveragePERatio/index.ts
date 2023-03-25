@@ -1,4 +1,4 @@
-import { PEdataPoint } from '../types/dataSeriesTypes';
+import type { PEdataPoint } from '../types/dataSeriesTypes';
 
 /**
  * Get the PE Average.
