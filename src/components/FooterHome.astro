@@ -1,0 +1,62 @@
+---
+import SocialLink from './HeaderLink.astro';
+const today = new Date();
+---
+
+<footer>
+	<nav class="social">
+        <SocialLink href="/blog" class="linkedin-icon">
+            <span>Blog</span>
+        </SocialLink>
+        <SocialLink href="https://www.linkedin.com/in/slacktronic/" target="_blank" class="linkedin-icon">
+            <span> LinkedIn</span>
+        </SocialLink>
+        <SocialLink href="https://instagram.com/slacktronic" target="_blank" class="instagram-icon">
+            <span> Instagram</span>
+        </SocialLink>
+        <SocialLink href="https://github.com/stevenslack" target="_blank" class="github-icon">
+            <span> GitHub</span>
+        </SocialLink>
+    </nav>
+	&copy; {today.getFullYear()} Steven Slack.
+</footer>
+<style>
+    nav {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    nav a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 1em;
+    }
+
+    span {
+        padding-left: 7px;
+    }
+
+    @media (min-width: 30rem) {
+        nav {
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        nav a {
+            margin-right: 2.5rem;
+        }
+
+        nav a:last-of-type {
+            margin-right: 0;
+        }
+    }
+	footer {
+		font-size: 0.8rem;
+		padding: 25px;
+		text-align: center;
+	}
+</style>

@@ -1,8 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import DarkLight from '../components/DarkLight.astro';
-import Social from '../components/Social.astro';
-import Footer from '../components/Footer.astro';
+import FooterHome from '../components/FooterHome.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 import '../styles/main.scss';
@@ -14,8 +13,10 @@ import '../styles/main.scss';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<main class="container">
+		<div class="container">
 			<DarkLight />
+		</div>
+		<main class="container">
 			<section class="hero">
 				<div class="heading-wrapper">
 					<img alt="" src="/profile-pic-black-white-2.png" alt="profile photo of Steven Slack" height="150" width="150" loading="lazy">
@@ -30,15 +31,7 @@ import '../styles/main.scss';
 				</p>
 			</section>
 			<hr>
-			<section class="social">
-				<Social />
-			</section>
 		</main>
-		<Footer />
+		<FooterHome />
 	</body>
 </html>
-<style>
-	.social {
-		margin-bottom: 3em;
-	}
-</style>
