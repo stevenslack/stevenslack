@@ -49,6 +49,7 @@
 
 /* Tooltip styles */
 .tooltip {
+  display: none;
   background: #fff;
   border: 1px solid #ddd;
   color: #333;
@@ -100,4 +101,10 @@
 .data-display dd {
   font-weight: 700;
   margin-left: 10px;
+}
+
+@media screen and (min-width: 900px) {
+  .tooltip {
+    display: block;
+  }
 }
