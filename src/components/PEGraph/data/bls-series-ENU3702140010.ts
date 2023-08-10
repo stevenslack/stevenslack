@@ -106,6 +106,9 @@ const seriesData: any = [
   { year: '2021', period: 'Q05', value: '970' },
   { year: '2022', period: 'Q01', value: '972' },
   { year: '2022', period: 'Q02', value: '990' },
+  { year: '2022', period: 'Q03', value: '1065' },
+  { year: '2022', period: 'Q04', value: '1089' },
+  { year: '2022', period: 'Q05', value: '1028' },
 ];
 
 export default seriesData;

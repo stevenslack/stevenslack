@@ -3,7 +3,7 @@
 For wage data the Bureau of Labor Statistics series data is used.
 You can generate new CSV formatted data from the data retrieval tools: https://data.bls.gov/pdq/SurveyOutputServlet
 
-Data extracted on: February 2, 2023 (8:20:07 AM)
+Data extracted on: August 8, 2023 (9:21 AM)
 
 Quarterly Census of Employment and Wages
 
