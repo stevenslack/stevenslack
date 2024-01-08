@@ -152,6 +152,13 @@ export default function renderChart(width: number, height: number) {
   const tooltipCircle = d3.select('.pe-graph__tooltip-circle');
   const xAxisLine = d3.select('.pe-graph__drop-line');
 
+  const tooltipRect = (tooltip.node() as Element)?.getBoundingClientRect();
+
+  // The tooltip position is half the width of the tooltip minus 4px for the border.
+  const toolTipHalf = tooltipRect ? (tooltipRect.width / 2) - 4 : 0;
+  // The tooltip height minus 15px for the triangle.
+  const tooltipHeight = tooltipRect ? tooltipRect.height - 15 : 0;
+
   /**
    * Populate the PE data Point display.
    *
@@ -206,12 +213,10 @@ export default function renderChart(width: number, height: number) {
       const y = yScale(dataPoint?.PEratio);
 
       tooltip
-        .attr('x', x)
-        .attr('y', y)
         .style('opacity', 1)
         .style(
           'transform',
-          'translate(-118px, -120px)',
+          `translate(${x - toolTipHalf}px, ${y - tooltipHeight}px)`,
         );
 
       tooltipCircle
