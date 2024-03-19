@@ -20,11 +20,11 @@
     "test:watch": "jest src --watch"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/mdx": "^2.2.0",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.1",
-    "astro": "^4.4.11",
-    "d3": "^7.8.5"
+    "astro": "^4.5.6",
+    "d3": "^7.9.0"
   },
   "devDependencies": {
     "@babel/plugin-syntax-import-assertions": "^7.23.3",
@@ -32,16 +32,16 @@
     "@babel/preset-typescript": "^7.23.3",
     "@types/d3": "^7.4.3",
     "@types/jest": "^29.5.12",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "sass": "^1.71.1",
+    "sass": "^1.72.0",
     "stylelint": "^16.2.1",
-    "stylelint-config-sass-guidelines": "^11.0.0",
+    "stylelint-config-sass-guidelines": "^11.1.0",
     "ts-jest": "^29.1.2"
   }
 }
