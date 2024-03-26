@@ -2,21 +2,14 @@
 title: "Asheville NC affordability metric"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "March 25 2023"
-updatedDate: "August 10 2023"
+updatedDate: "March 26 2024"
 ---
 
-It is no surprise to anyone that the past year 2022 has seen the biggest housing bubble in US history
-resulting in home prices that have pushed many first time home buyers out of the market.
-The high sticker price of homes associated with higher mortgage rates has also produced 
-the lowest home buyer sentiment in more than a decade according to 
-[Fannie Mae’s home purchase Sentiment Index](https://www.fanniemae.com/research-and-insights/surveys-indices/national-housing-survey). 
+It comes as no surprise to anyone that the past several years, 2022 through Q1 of 2024, witnessed the largest housing bubble in US history, leading to home prices that have priced out many first-time home buyers from the market. The steep price tags on homes, coupled with higher mortgage rates, have also resulted in the lowest home buyer sentiment in over a decade, as reported by [Fannie Mae’s home purchase Sentiment Index](https://www.fanniemae.com/research-and-insights/surveys-indices/national-housing-survey).
 
-Asheville North Carolinas housing bubble has resulting in exorbitant home prices despite 
-the median household income of roughly $60,000 according to the U.S. Census. For a person 
-making just the median income they would have to spend 7x their annual income for $422,000 home.
+In Asheville, North Carolina, the housing bubble has caused home prices to skyrocket, despite a median household income of roughly $60,000 according to the U.S. Census. For someone earning just the median income, purchasing a $422,000 home would require spending seven times their annual income.
 
-This ratio, household income to home prices (price to earnings P/E), can function as an affordability metric. We can map this value
-over time in Asheville to produce a picture of how housing affordability has changed over time.
+This ratio, known as the household income to home prices (or price-to-earnings P/E ratio), serves as an affordability metric. By mapping this value over time in Asheville, we can visualize how housing affordability has evolved over the years.
 
 import PEGraph from '../../components/PEGraph.astro';
 
@@ -27,13 +20,12 @@ and the median home prices from [Zillows ZHVI data series](https://www.zillow.co
 Each data point represents average home prices and reported wages for a quarterly period in a year going back
 to 2002. The fluctuations from peaks to valleys represent the seasonal differences in home values.
 
-Until the value comes close to the average, affordability and home prices are out of reach for the
-average worker in Asheville NC.
+Until the value comes close to the long term average (the dotted horizontal line on the graph), affordability and home prices are out of reach for the average household in Asheville NC.
 
 Thanks to [Reventure Consulting](https://www.reventure.app/) for inspiration in creating this graph. 
 If you are interested in tracking data on the US housing market I highly recommend [Nick Gerli's YouTube
 channel](https://www.youtube.com/c/ReventureConsulting) and you can track data yourself using the 
-[Reventure app](https://www.reventure.app/) from Reventure Consulting.
+[Reventure app](https://map.reventure.app/graph?contextData=%7B%22name%22%3A%22Asheville%2C+NC%22%2C%22GEOID%22%3A11700%2C%22NAME%22%3A%22Asheville%2C+NC%22%7D&geo=metro&datapoint=home_value) from Reventure Consulting.
 
 ---
 
@@ -42,7 +34,8 @@ channel](https://www.youtube.com/c/ReventureConsulting) and you can track data y
 This graph was build using [D3.js](https://github.com/d3/d3), a JavaScript library for visualizing data.
 It was written in [Typescript](https://www.typescriptlang.org/), unit tested with [Jest](https://jestjs.io/), 
 and linted by [ESLint](https://eslint.org/) and [Stylelint](https://stylelint.io/). 
-The build system is using [Vite](https://vitejs.dev/). 
+The build system is using [Vite](https://vitejs.dev/).
+
 You can view [the source code on GitHub](https://github.com/stevenslack/avl-housing-data).
 
 **Updates**
