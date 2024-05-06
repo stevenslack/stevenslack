@@ -1,0 +1,185 @@
+---
+title: "NPM Workspaces in WordPress Development"
+description: "An NPM Workspace is easy to set up and takes the pain out of dependency management, running tasks, and sharing code in a WordPress project."
+pubDate: "May 6 2024"
+---
+
+Managing a large WordPress project with numerous custom plugins and themes can be challenging, often leading to redundant maintenance efforts. In such scenarios, you may want to consider setting up an NPM workspace.
+
+Maintaining each plugins and themes package dependencies and build systems can be redundant. Depending on how many plugins the project is maintaining this can also require a lot of time and effort.
+
+**An NPM workspace can help to manage and maintain dependencies, share code, ensure compatibility with WP versions, and run tasks in a WordPress project with a large collection of plugins, themes, and internal packages.**
+
+## The WordPress structure using an NPM Workspace
+
+In WordPress projects for a single site or multisite setup the `wp-content` folder is often used as the root directory of the version controlled codebase. This is because the `wp-content` directory contains subdirectories such as themes and plugins that allow a site to be customized. This directory can also be configured as the "[root workspace](https://turbo.build/repo/docs/handbook/what-is-a-monorepo#the-root-workspace)" for the NPM workspace containing a `package.json` file.
+
+Workspaces are the main components of the monorepo. Each package, plugin, or theme you add to the monorepo will be **inside its own workspace**.
+
+Workspaces are managed by the [package manager](https://turbo.build/repo/docs/handbook/package-installation) such as NPM and are configured in the root `package.json` file in the workspace config.
+
+You can read more on [workspaces in the NPM documentation](https://docs.npmjs.com/cli/v8/using-npm/workspaces#description).
+
+The root workspace is a useful place for:
+
+1. Specifying `devDependencies` which are present across the entire NPM workspace.
+2. Adding scripts (build, lint, test, etc) to run tasks that operate on the *whole* monorepo, not just individual workspaces. These commands can be found in the scripts property of the root `package.json` file.
+3. Specifying which directories (themes, plugins, packages) will function as workspaces in the monorepo.
+
+**Example Structure**
+
+```
+wp-content
+    package.json
+    packages
+        webpack-plugin
+        shared-javascript-code
+    plugins
+        feature-one
+        feature-two
+        feature-three
+        feature-four
+    themes
+        parent-theme
+        child-theme
+```
+
+Following the structure above, setting up the `package.json` file in the root `wp-content` directory to manage these plugins and themes (workspaces) will look like this:
+
+```json
+{
+  "name": "monorepo-workspace",
+  "workspaces": [
+    "packages/*",
+    "plugins/feature-one",
+    "plugins/feature-two",
+    "plugins/feature-three",
+    "plugins/feature-four",
+    "themes/parent-theme",
+    "themes/child-theme"
+  ]
+}
+```
+
+Note that the wildcard in the `packages/*` string indicates that each directory in packages with a `package.json` file will be included in the monorepo.
+
+You can now install the dependencies using the package manager in the `wp-content` directory.
+
+## The benefits of a NPM Workspace in WordPress development
+
+1. **Shared Code**
+   The primary benefit of a monorepo is sharing code by way of internal packages and shared dependencies.
+
+2. **Efficient dependency management**
+   Increased efficiency when it comes to updating the dependencies.
+
+3. **Compatibility** 
+   Easier compatibility with WordPress scripts as we update our plugins and themes to newer WordPress versions.
+
+4. **Running Tasks:**
+   Scripts and tasks can be executed much faster with tools like Turborepo and the CI/CD pipelines will run much more efficiently if caching is used to improve build times.
+
+## Shared Code
+
+A monorepo lets you share code between workspaces seamlessly. In the context of a WordPress project these workspaces can be plugins, themes, and internal packages.
+
+A packages directory can be defined in the `wp-content` directory at the root of the repo to declare all internal packages.
+
+Each package directory contains a package.json and can function much like an external package that you install from NPM.
+
+The packages can now be imported in each workspace.
+
+## Efficient Dependency Management
+
+Updating dependencies can be done for the entire monorepo of NPM workspaces instead of jumping around in each workspace in order to update out of date packages.
+
+For example, instead of updating ESLint, Stylelint, Jest or Webpack in 4 or 5 different plugins and themes you can manage these dependencies in the monorepo.
+
+To update a dependency to a specific version for all workspaces you can update or install with the `—workspaces` flag:
+
+```sh
+# Update react to the latest version for all workspaces
+npm install react@latest --workspaces
+
+# Update the sass-loader dependency and save it to package.json
+npm update sass-loader --save --workspaces
+```
+
+## Compatibility
+
+When developing in the block editor it is important to ensure that your `@wordpress` packages are properly synced to match the version of WordPress that your project is using. This ensures that the dependencies can reference the proper APIs and show deprecated warnings in your IDE if any methods have been removed in the version of WordPress you are on.
+
+The `@wordpress/scripts` package has a command,  `packages-update`, that can sync `@wordpress` packages to a particular version:
+
+```sh
+# Sync @wordpress packages to WordPress v6.4
+npx wp-scripts packages-update --dist-tag=wp-6.4
+```
+So to run this command in the entire monorepo you can execute the following:
+
+```sh
+npm exec --workspaces -- npx wp-scripts packages-update --dist-tag=wp-6.4
+```
+
+## Running Tasks
+
+**Using Turborepo for improved monorepo performance**
+
+We can use Turborepo to improve the developer experience and performance of the monorepo. Turborepo is highly efficient at [running tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks) and it is recommended that Turborepo runs the tasks and NPM handles the installs for the packages. 
+
+Tasks can be defined in the `turbo.json` file in the workspace. You can declare a turbo.json in the root directory with a uniform ~[pipeline](https://turbo.build/repo/docs/reference/configuration#pipeline)~ that applies to all workspaces for running tasks.
+
+[Read more on configuring workspaces with Turborepo.](https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces)
+
+Example turbo.json setup to run build, stylelint, lint, and test scripts.
+
+```json
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependson": ["^build"],
+      "outputs": ["build/**", "dist/**"]
+    },
+    "stylelint": {},
+    "lint"：{}，
+    "test": {}
+  }
+}
+```
+
+To run the build task in the command line you can execute the following from the `wp-content` root:
+
+```sh
+turbo run build --cache-dir=./.cache --parallel
+```
+
+You can add these scripts to the `scripts` configuration in the root package.json to easily execute this command for all the workspaces.
+
+You can update the `package.json` accordingly: 
+
+```diff
+{
+  "name": "monorepo-workspace",
+  "workspaces": [
+    "packages/*",
+    "plugins/feature-one",
+    "plugins/feature-two",
+    "plugins/feature-three",
+    "plugins/feature-four",
+    "themes/parent-theme",
+    "themes/child-theme"
+  ],
+  "scripts": {
++    "build": "turbo run build --cache-dir=./.cache --parallel",
++    "lint": "turbo run lint --cache-dir=./.cache --parallel",
++    "stylelint": "turbo run stylelint --cache-dir=./.cache",
++    "test": "turbo run test --cache-dir=./.cache",
+  }
+}
+```
+
+Using these tasks in the CI/CD pipelines has an added advantage of improving pipeline performance when using caching provided by Turborepo.
+## Conclusion
+
+An NPM Workspace is easy to set up and takes the pain out of dependency management, running tasks, and sharing code in a WordPress project.
