@@ -108,9 +108,9 @@ npm update sass-loader --save --workspaces
 
 ## Compatibility
 
-When developing in the block editor it is important to ensure that your `@wordpress` packages are properly synced to match the version of WordPress that your project is using. This ensures that the dependencies can reference the proper APIs and show deprecated warnings in your IDE if any methods have been removed in the version of WordPress you are on.
+When developing in the block editor it is important to ensure that your [`@wordpress` packages](https://developer.wordpress.org/block-editor/reference-guides/packages/) are properly synced to match the version of WordPress that your project is using. This ensures that the dependencies can reference the proper APIs and show deprecated warnings in your IDE if any methods have been removed in the version of WordPress you are on.
 
-The `@wordpress/scripts` package has a command,  `packages-update`, that can sync `@wordpress` packages to a particular version:
+The [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) package has a command,  [packages-update](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/#packages-update), that can sync `@wordpress` packages to a particular version. This is useful when using the [@wordpress/dependency-extraction-webpack-plugin](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dependency-extraction-webpack-plugin/) in WordPress block and editor development.
 
 ```sh
 # Sync @wordpress packages to WordPress v6.4
