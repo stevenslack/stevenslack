@@ -9,7 +9,9 @@ Managing a large WordPress project with numerous custom plugins and themes can b
 
 Maintaining each plugins and themes package dependencies and build systems can be redundant. Depending on how many plugins the project is maintaining this can also require a lot of time and effort.
 
-**An NPM workspace can help to manage and maintain dependencies, share code, ensure compatibility with WP versions, and run tasks in a WordPress project with a large collection of plugins, themes, and internal packages.**
+import InfoBox from '../../components/InfoBox.astro';
+
+<InfoBox paragraphStyles="font-weight: 700" content="An NPM workspace can help to manage and maintain dependencies, share code, ensure compatibility with WP versions, and run tasks in a WordPress project with a large collection of plugins, themes, and internal packages." />
 
 ## The WordPress structure using an NPM Workspace
 
@@ -96,7 +98,7 @@ Updating dependencies can be done for the entire monorepo of NPM workspaces inst
 
 For example, instead of updating ESLint, Stylelint, Jest or Webpack in 4 or 5 different plugins and themes you can manage these dependencies in the monorepo.
 
-To update a dependency to a specific version for all workspaces you can update or install with the `—workspaces` flag:
+To update a dependency to a specific version for all workspaces you can update or install with the `--workspaces` flag:
 
 ```sh
 # Update react to the latest version for all workspaces
@@ -110,7 +112,7 @@ npm update sass-loader --save --workspaces
 
 When developing in the block editor it is important to ensure that your [`@wordpress` packages](https://developer.wordpress.org/block-editor/reference-guides/packages/) are properly synced to match the version of WordPress that your project is using. This ensures that the dependencies can reference the proper APIs and show deprecated warnings in your IDE if any methods have been removed in the version of WordPress you are on.
 
-The [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) package has a command,  [packages-update](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/#packages-update), that can sync `@wordpress` packages to a particular version. This is useful when using the [@wordpress/dependency-extraction-webpack-plugin](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dependency-extraction-webpack-plugin/) in WordPress block and editor development.
+The [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) package has a command, [packages-update](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/#packages-update), that can sync `@wordpress` packages to a particular version. This is useful when using the [@wordpress/dependency-extraction-webpack-plugin](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dependency-extraction-webpack-plugin/) in WordPress block and editor development.
 
 ```sh
 # Sync @wordpress packages to WordPress v6.4
@@ -130,7 +132,7 @@ We can use Turborepo to improve the developer experience and performance of the 
 
 Tasks can be defined in the `turbo.json` file in the workspace. You can declare a turbo.json in the root directory with a uniform [pipeline](https://turbo.build/repo/docs/reference/configuration#pipeline) that applies to all workspaces for running tasks.
 
-[Read more on configuring workspaces with Turborepo.](https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces)
+[You can read more on configuring workspaces with Turborepo in the Turborepo documentation.](https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces)
 
 Example turbo.json setup to run build, stylelint, lint, and test scripts.
 

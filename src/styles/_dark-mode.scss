@@ -40,7 +40,11 @@
   }
 
   code {
-    border-radius: 3px;
+    background-color: var(--light-mode-text);
+  }
+
+  pre > code {
+      all: unset;
   }
 
   .linkedin-logo {
@@ -54,5 +58,9 @@
   .instagram-icon path,
   .github-icon path {
     fill: #bdbdbd;
+  }
+
+  .infobox {
+    color: #404040;
   }
 }

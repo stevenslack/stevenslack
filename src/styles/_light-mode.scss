@@ -21,6 +21,14 @@
     background-color: #f9f9f9;
   }
 
+  code {
+    background-color: #f1f1f1;
+  }
+
+  pre > code {
+      all: unset;
+  }
+
   .feather-sun {
     opacity: 1;
     transform: translateX(1.5rem);
