@@ -25,6 +25,13 @@
     background-color: #f1f1f1;
   }
 
+  blockquote{
+  
+    &::before {
+      background: var(--light-mode-link);
+    }
+  }
+
   pre > code {
       all: unset;
   }

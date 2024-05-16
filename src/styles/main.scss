@@ -1,6 +1,10 @@
 @import './gradient-animation';
 @import './mixins';
 
+.container {
+  max-width: 65ch;
+}
+
 .hero {
   font-size: 1.12rem;
   text-align: center;

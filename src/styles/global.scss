@@ -13,9 +13,13 @@
   background-color: #fff;
   color: #444;
   font-family: Verdana, sans-serif;
-  font-size: 16px;
+  font-size: var(--base-font-size);
   line-height: 1.6;
   transition: background-color 0.1s ease-in-out;
+}
+
+article {
+  font-size: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.683), 1.2rem)
 }
 
 .feather-sun {
@@ -68,7 +72,7 @@ b {
 }
 
 a {
-  color: #3273dc;
+  color: var(--light-mode-link);
 }
 
 button {
@@ -110,18 +114,39 @@ pre > code {
   all: unset;
 }
 
-blockquote {
-  border: 1px solid #999;
-  color: #222;
+blockquote{
+  background: #fafafa;
+  font-family: Open Sans;
+  font-size: 1.4em;
   font-style: italic;
-  margin: 0;
-  padding: 2px 0 2px 20px;
+  line-height: 1.6;
+  margin: 20px auto;
+  padding: 0.2em 2em 0.2em 3em;
+  position: relative;
+
+  &::before {
+    background: var(--dark-mode-link);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 8px;
+  }
+}
+
+cite {
+  display: block;
+  font-size: 0.8em;
+  font-style: normal;
+  margin-top: 0.5rem;
 }
 
 .container {
   margin-left: auto;
   margin-right: auto;
   max-width: 65ch;
+  max-width: 72.5ch;
   padding-left: 1rem;
   padding-right: 1rem;
 }

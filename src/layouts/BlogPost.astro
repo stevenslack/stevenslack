@@ -17,8 +17,6 @@ const {
 	heroImage,
 	heroImageCredit,
 } = Astro.props;
-
-console.log(heroImage);
 ---
 
 <html lang="en">
@@ -36,6 +34,9 @@ console.log(heroImage);
 			.last-updated-on {
 				font-style: italic;
 			}
+			.last-updated-on span {
+				font-size: 0.8em; 
+			}
 			.heading {
 				margin-bottom: 1rem;
 			}
@@ -52,7 +53,7 @@ console.log(heroImage);
 					{
 						updatedDate && (
 							<div class="last-updated-on">
-								Last updated on <FormattedDate date={updatedDate} />
+								<span>Last updated on</span> <FormattedDate date={updatedDate} />
 							</div>
 						)
 					}

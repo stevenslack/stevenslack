@@ -5,20 +5,19 @@ heroImage: '/content-images/wordpress-block-file-structure.jpg'
 pubDate: "May 15 2024"
 ---
 
-> The behaviour of a unit of code should be as obvious as possible by looking only at that unit of code
-> -- [The Locality of Behaviour Principle from the HTMX essays](https://htmx.org/essays/locality-of-behaviour/#the-lob-principle)
-
-When I started developing blocks for the WordPress block editor, referred to as [Gutenberg](https://wordpress.org/gutenberg/), one of the most convenient outcomes from the developer experience was organization of the block files. Specifically I mean where the files are located. 
+When I began developing blocks for the WordPress block editor, also referred to as [Gutenberg](https://wordpress.org/gutenberg/), one of the most convenient aspects of the developer experience was the organization of block files. Specifically I mean where the files are located. 
 
 All of a blocks files, the JavaScript/Typescript, PHP, CSS/SCSS, and JSON can be authored in the blocks directory effectively encapsulating all the behavior.
 
-In other areas of development focus may be put on “separation of concerns” where we would separate the JavaScript, HTML, and CSS by putting these files in their respective locations in the file system. The bundler would then compile these files accordingly. There is still a strong argument for this pattern. However, the more complex the application becomes the more challenging it can be to find all the behavior associated with a feature or functionality. 
+> The behaviour of a unit of code should be as obvious as possible by looking only at that unit of code <cite>-- [The Locality of Behaviour Principle from the HTMX essays](https://htmx.org/essays/locality-of-behaviour/#the-lob-principle)</cite>
 
-**The true benefit of locality of behavior is in the developer experience.** By locating all the block files in the same directory the code becomes more “[humane and maintainable](https://htmx.org/essays/locality-of-behaviour/#conclusion)”.  When working on a team it is much easier to direct a developer to a directory rather than asking them to “find” all the files that impact the behavior of that block functionality.
+In other development contexts, there is often a focus on the 'separation of concerns' principle, which involves segregating JavaScript, HTML, and CSS files into their respective directories within the file system. The bundler would then compile these files accordingly. There is still a strong argument for this pattern. However, the more complex the application becomes the more challenging it can be to find all the behavior associated with a feature or functionality. 
 
-When developing blocks with [`@wordpress/scripts`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) the build script will compile and transpile the Typescript and SASS while copying the relevant PHP files into the build directory. This is particularly useful as the developer is not required to setup a complex web of includes for the block entry point.
+**The true benefit of locality of behavior lies in enhancing the developer experience.** By locating all the block files in the same directory the code becomes more “[manageable and maintainable](https://htmx.org/essays/locality-of-behaviour/#conclusion)”. When working on a team it is much easier to direct a developer to a directory rather than asking them to “find” all the files that impact the behavior of that block functionality.
+
+When developing blocks with [`@wordpress/scripts`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/), the build script handles the compilation and transpilation of TypeScript and SASS, while also copying relevant PHP files into the build directory. This feature is particularly useful as it eliminates the need for developers to set up complex file inclusion structures for the block's entry point.
 
 WordPress itself will handle the inclusion of the scripts and styles by calling them only when the block is present on the page. This in turn is performant for the overall application by excluding unnecessary scripts and styles and unused code.
 
 ## Conclusion
-[Locality of behavior](https://htmx.org/essays/locality-of-behaviour/) is an added benefit of developing blocks in WordPress. It can improve the maintainability and developer experience when building Gutenberg blocks.
+[Locality of behavior](https://htmx.org/essays/locality-of-behaviour/) is an added benefit of developing blocks in WordPress. It improves maintainability and enhances the developer experience when building Gutenberg blocks.

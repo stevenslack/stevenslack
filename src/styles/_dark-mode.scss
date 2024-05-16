@@ -23,7 +23,12 @@
   }
 
   blockquote {
+    background-color: #404040;
     color: var(--dark-mode-text);
+
+    &::before {
+      background: var(--dark-mode-link);
+    }
   }
 
   .theme-button {
