@@ -1,0 +1,54 @@
+---
+import FormattedDate from './FormattedDate.astro';
+const { post } = Astro.props;
+const { title, pubDate, description } = post.data;
+---
+
+<li>
+  
+    <h2><a href={`/blog/${post.slug}/`}>{title}</a></h2>
+  <div class="pub-date">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="21.6px" width="21.6px">
+      <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path>
+      <path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path>
+    </svg>
+    <FormattedDate date={pubDate} />
+  </div>
+  <p>{description}</p>
+</li>
+
+<style>
+  li {
+    margin-block-end: 2rem;
+  }
+	h2 {
+		font-size: 1.2rem;
+    margin-block-end: 0.2rem;
+	}
+  a {
+    text-decoration: inherit;
+    text-underline-offset: 6px;
+  }
+  a:hover {
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+  }
+  p {
+    font-size: 0.95rem;
+    margin-block-start: 0.3rem;
+  }
+  svg {
+    fill: var(--text-color);
+    margin-block-end: 0.2rem;
+    margin-inline-end: 0.6rem;
+  }
+  .pub-date {
+    display: flex;
+    align-items: center;
+    font-style: italic;
+  }
+
+  :root[data-theme='dark'] svg {
+    fill: var(--dark-mode-text);
+  }
+</style>
