@@ -1,5 +1,5 @@
-@import './gradient-animation';
-@import './mixins';
+@use 'gradient-animation';
+@use 'mixins';
 
 .container {
   max-width: 65ch;

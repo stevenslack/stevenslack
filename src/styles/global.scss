@@ -4,10 +4,10 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
-@import './vars';
-@import './light-mode';
-@import './dark-mode';
-@import './mixins';
+@use 'vars';
+@use 'light-mode';
+@use 'dark-mode';
+@use 'mixins';
 
 :root {
   background-color: #fff;
@@ -33,22 +33,22 @@ article {
 
 @media (prefers-color-scheme: light) {
   :root {
-    @include light-mode();
+    @include light-mode.light-mode();
   }
 }
 
 :root[data-theme='dark'] {
-  @include dark-mode();
+  @include dark-mode.dark-mode();
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    @include dark-mode();
+    @include dark-mode.dark-mode();
   }
 }
 
 :root[data-theme='light'] {
-  @include light-mode();
+  @include light-mode.light-mode();
 }
 
 body {
@@ -164,5 +164,5 @@ cite {
 }
 
 .gradient-text {
-  @include color-title();
+  @include mixins.color-title();
 }

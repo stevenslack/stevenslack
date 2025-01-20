@@ -1,4 +1,4 @@
-@import './gradient-animation' ;
+@use 'gradient-animation';
 
 // A shared mixin for the gradient text.
 @mixin color-title() {
