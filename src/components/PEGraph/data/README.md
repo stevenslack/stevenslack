@@ -25,3 +25,7 @@ This has rate limitations and date range limitations of 10 years therefore downl
 --- 
 For the ZHVI data, the Zillow Home Value Index is used and can be found at https://www.zillow.com/research/data/
 NOTE the change in how the ZHVI is calculated can be found here: https://www.zillow.com/research/methodology-neural-zhvi-32128/
+File Download link:
+https://files.zillowstatic.com/research/public_csvs/zhvi/County_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv?t=1740920520
+
+Note: Zillow makes occasional changes to CSV download paths and data is updated on the 16th of each month
