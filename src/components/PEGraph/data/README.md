@@ -17,12 +17,38 @@ Quarterly Census of Employment and Wages
 | Size         	| All establishment sizes                                                                                                        	|
 | Type         	| Average Weekly Wage                                                                                                            	|
 
+## Data Retrieval
+
+### Automated Data Updates
+
+**To update BLS wage data automatically:**
+
+```bash
+npm run update-bls
+```
+
+This script will:
+1. Fetch the latest data from the BLS API
+2. Compare with existing data in `bls-wages.ts`
+3. Append any new quarterly data points
+4. Maintain proper sorting by year and quarter
+
+**Testing the update script:**
+```bash
+node src/components/PEGraph/data/test-bls-update.js
+```
+
+### Manual Data Retrieval (Legacy)
+
 Data can be fetched via the BLS API as such:
 https://api.bls.gov/publicAPI/v2/timeseries/data/ENU3702140010/?startyear=2013&endyear=2023&calculations=true&annualaverage=true&aspects=true
 
+To get the latest data run the script without the `startyear` and `endyear` parameters. This will return the latest data available e.g.:
+https://api.bls.gov/publicAPI/v2/timeseries/data/ENU3702140010/?calculations=true&annualaverage=true&aspects=true
+
 This has rate limitations and date range limitations of 10 years therefore downloadable CSV data is much more rich and reliable. This requires manual updating.
 
---- 
+### ZHVI Data 
 For the ZHVI data, the Zillow Home Value Index is used and can be found at https://www.zillow.com/research/data/
 NOTE the change in how the ZHVI is calculated can be found here: https://www.zillow.com/research/methodology-neural-zhvi-32128/
 File Download link:

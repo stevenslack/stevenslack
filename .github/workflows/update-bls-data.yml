@@ -1,0 +1,64 @@
+# GitHub Actions workflow to automatically update BLS data
+# This workflow can be run manually or scheduled to run periodically
+
+name: Update BLS Data
+
+on:
+  # Allow manual triggering
+  workflow_dispatch:
+  
+  # Uncomment the following lines to run automatically on a schedule
+  # schedule:
+  #   # Run on the 1st and 15th of each month at 9 AM UTC
+  #   - cron: '0 9 1,15 * *'
+
+jobs:
+  update-bls-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Test BLS update script
+        run: npm run test-bls
+        
+      - name: Update BLS data
+        run: npm run update-bls
+        
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if git diff --quiet; then
+            echo "No changes detected"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Commit and push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/components/PEGraph/data/bls-wages.ts
+          git commit -m "Auto-update BLS wage data $(date +%Y-%m-%d)"
+          git push
+          
+      - name: Create summary
+        run: |
+          if [ "${{ steps.verify-changed-files.outputs.changed }}" == "true" ]; then
+            echo "✅ BLS data updated successfully" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No new BLS data available" >> $GITHUB_STEP_SUMMARY
+          fi
