@@ -54,7 +54,7 @@ describe('buildFiscalYearHomePriceData', () => {
   });
 
   test('returns null for an invalid data input', () => {
-    // @ts-ignore Ignored to cause a null return.
+    // @ts-expect-error Ignored to cause a null return.
     const homeValueSeries = buildFiscalYearHomePriceData({});
 
     expect(homeValueSeries).toBe(null);

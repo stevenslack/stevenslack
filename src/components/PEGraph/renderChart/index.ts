@@ -2,9 +2,6 @@ import * as d3 from 'd3';
 import type {
   PEdataPoint,
 } from '../types/dataSeriesTypes';
-import type {
-  AxisGenerator,
-} from '../types/lineChartTypes';
 import getPEDataSeries from '../getPEDataSeries';
 
 /**
@@ -55,7 +52,7 @@ export default function renderChart(width: number, height: number) {
    *
    * Constructs a new bottom-oriented axis generator for the given scale.
    */
-  const xAxis: AxisGenerator = d3.axisBottom(xScale);
+  const xAxis = d3.axisBottom(xScale);
 
   /**
    * Set the Y linear scale defined over a numeric domain (PEratio).
@@ -72,25 +69,17 @@ export default function renderChart(width: number, height: number) {
    *
    * Constructs a new left-oriented axis generator for the given scale.
    */
-  const yAxis: AxisGenerator = d3.axisLeft(yScale);
+  const yAxis = d3.axisLeft(yScale);
 
   /**
    * Line generator for the SVG path values in the line chart.
    */
-  const lineGenerator = d3.line()
-    .x((d: PEdataPoint | [number, number]) => {
-      if ('dateRange' in d) {
-        return xScale(d.dateRange?.[1]);
-      }
-      // default behavior of returning first element of a two-element array of numbers.
-      return d[0];
+  const lineGenerator = d3.line<PEdataPoint>()
+    .x((d: PEdataPoint) => {
+      return xScale(d.dateRange?.[1]);
     })
-    .y((d: PEdataPoint | [number, number]) => {
-      if ('PEratio' in d) {
-        return yScale(d.PEratio);
-      }
-      // default behavior of returning first element of a two-element array of numbers.
-      return Array.isArray(d) ? d[0] : 0;
+    .y((d: PEdataPoint) => {
+      return yScale(d.PEratio);
     })
     .curve(d3.curveMonotoneX);
 
@@ -99,7 +88,7 @@ export default function renderChart(width: number, height: number) {
    */
   d3.select('.pe-graph__pe-ratio-line')
     .datum(dataSeries)
-    .attr('d', lineGenerator as any);
+    .attr('d', (d) => lineGenerator(d));
 
   /**
    * Create the horizontal average line
@@ -125,7 +114,7 @@ export default function renderChart(width: number, height: number) {
   svg.select('.pe-graph__x-axis')
     // The transform puts the x axis at the bottom of the graph.
     .attr('transform', `translate(0, ${height})`)
-    .call(xAxis);
+    .call(xAxis as never);
 
   /**
    * Add the label and set the position for the X Axis.
@@ -139,7 +128,7 @@ export default function renderChart(width: number, height: number) {
    * which displays the ticks as price to earnings values.
    */
   svg.select('.pe-graph__y-axis')
-    .call(yAxis);
+    .call(yAxis as never);
 
   /**
    * Add the label and set the position for the Y Axis.
@@ -195,7 +184,6 @@ export default function renderChart(width: number, height: number) {
    * On the SVG mousemove calculate the position and show the data display as a tooltip.
    */
   svg.on('mousemove', (event) => {
-    // eslint-disable-next-line max-len
     const calculateDataPoint = (d: PEdataPoint) => Math.abs(Number(d.dateRange?.[1]) - Number(xScale.invert(event.offsetX)));
     // Update the position of the tooltip
     const index = d3.leastIndex(

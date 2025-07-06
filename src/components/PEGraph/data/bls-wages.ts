@@ -1,4 +1,10 @@
-const seriesData: any = [
+interface SeriesDataPoint {
+  year: string;
+  period: string;
+  value: string;
+}
+
+const seriesData: SeriesDataPoint[] = [
   { year: '2001', period: 'Q01', value: '535' },
   { year: '2001', period: 'Q02', value: '535' },
   { year: '2001', period: 'Q03', value: '547' },

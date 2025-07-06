@@ -13,9 +13,9 @@ import type { YearData } from '../types/fiscalYearTypes';
  *               with year keys and quarterly home price values.
  */
 export default function buildFiscalYearHomePriceData(
-  data: ZHVIdata | {}[],
+  data: ZHVIdata | object[],
 ): HomeValueSeries | null {
-  let monthlyHomePrices: {}[] = [{}];
+  let monthlyHomePrices: object[] = [{}];
 
   // Ensure the data is in the correct shape.
   if (Array.isArray(data) && data?.length >= 1) {
@@ -26,7 +26,7 @@ export default function buildFiscalYearHomePriceData(
     return null;
   }
 
-  return monthlyHomePrices.reduce((acc: YearData, curr: [string, number] | {}) => {
+  return monthlyHomePrices.reduce((acc: YearData, curr: [string, number] | object) => {
     const date = Array.isArray(curr) ? new Date(curr[0]) : new Date();
 
     const year: string = JSON.stringify(date.getFullYear());
