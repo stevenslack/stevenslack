@@ -16,10 +16,14 @@
     "lint": "eslint --ext .js,.ts .",
     "lint:fix": "eslint --ext .js --ext .ts",
     "stylelint": "stylelint \"**/*.scss\" --allow-empty-input",
-    "test": "jest src --silent && npm run test-bls",
+    "test": "jest src --silent && npm run test-bls && npm run test-zhvi",
     "test:watch": "jest src --watch",
     "update-bls": "node src/components/PEGraph/data/update-bls-data.js",
-    "test-bls": "node src/components/PEGraph/data/test-bls-update.js"
+    "test-bls": "node src/components/PEGraph/data/test-bls-update.js",
+    "update-zhvi": "node src/components/PEGraph/data/update-zhvi-data.js",
+    "test-zhvi": "node src/components/PEGraph/data/test-zhvi-update.js",
+    "compare-zhvi": "node src/components/PEGraph/data/compare-zhvi-updates.js",
+    "update-data": "npm run update-bls && npm run update-zhvi"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",

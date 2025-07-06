@@ -35,11 +35,47 @@ This script will:
 
 **Testing the update script:**
 ```bash
-node src/components/PEGraph/data/test-bls-update.js
+npm run test-bls
+```
+
+### ZHVI Data
+
+**To update ZHVI housing data automatically:**
+
+```bash
+npm run update-zhvi
+```
+
+This script will:
+1. Download the latest Zillow ZHVI CSV file (~12MB)
+2. Extract Buncombe County data (RegionID: 2156)
+3. Merge with existing data in `avl-county-zhvi.json`
+4. Update both JSON and CSV files
+5. Maintain chronological sorting
+6. Clean up the downloaded CSV file to save disk space
+
+**Important Note:** Zillow regularly revises historical ZHVI values with each monthly release. This means previous months' values may change when you update. This is normal and reflects Zillow's ongoing improvements to their methodology and data quality.
+
+**To preview changes before updating:**
+```bash
+npm run compare-zhvi
+```
+
+This comparison tool will show you what data would be added or revised without making any changes to your files. Note: The tool requires a downloaded CSV file, so if the file has been cleaned up, it will prompt you to run the update script.
+
+**Testing the ZHVI update script:**
+```bash
+npm run test-zhvi
+```
+
+**Update both datasets:**
+```bash
+npm run update-data
 ```
 
 ### Manual Data Retrieval (Legacy)
 
+**BLS Data:**
 Data can be fetched via the BLS API as such:
 https://api.bls.gov/publicAPI/v2/timeseries/data/ENU3702140010/?startyear=2013&endyear=2023&calculations=true&annualaverage=true&aspects=true
 
@@ -48,7 +84,7 @@ https://api.bls.gov/publicAPI/v2/timeseries/data/ENU3702140010/?calculations=tru
 
 This has rate limitations and date range limitations of 10 years therefore downloadable CSV data is much more rich and reliable. This requires manual updating.
 
-### ZHVI Data 
+**ZHVI Data:** 
 For the ZHVI data, the Zillow Home Value Index is used and can be found at https://www.zillow.com/research/data/
 NOTE the change in how the ZHVI is calculated can be found here: https://www.zillow.com/research/methodology-neural-zhvi-32128/
 File Download link:

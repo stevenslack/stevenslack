@@ -9,8 +9,9 @@ on:
   
   # Uncomment the following lines to run automatically on a schedule
   # schedule:
-  #   # Run on the 1st and 15th of each month at 9 AM UTC
-  #   - cron: '0 9 1,15 * *'
+  #   # Run on the 17th and 1st of each month at 9 AM UTC
+  #   # Note: Zillow updates ZHVI data on the 16th, so we run on the 17th
+  #   - cron: '0 9 1,17 * *'
 
 jobs:
   update-economic-data:
