@@ -195,7 +195,6 @@ export default function renderChart(width: number, height: number) {
    * On the SVG mousemove calculate the position and show the data display as a tooltip.
    */
   svg.on('mousemove', (event) => {
-    // eslint-disable-next-line max-len
     const calculateDataPoint = (d: PEdataPoint) => Math.abs(Number(d.dateRange?.[1]) - Number(xScale.invert(event.offsetX)));
     // Update the position of the tooltip
     const index = d3.leastIndex(

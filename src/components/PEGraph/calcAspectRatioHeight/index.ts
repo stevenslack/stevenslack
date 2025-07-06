@@ -13,7 +13,6 @@ export default function calcAspectRatioHeight(width: number = 100, aspectRatio: 
   // If the aspect ratio is invalid use the default value of 16:9.
   if (!y || !y.includes(':')) {
     y = '16:9';
-    // eslint-disable-next-line no-console
     console.log(errorMessage);
   }
   // Split the string between the delimiter in order to run the aspect ratio calculation.
@@ -35,7 +34,6 @@ export default function calcAspectRatioHeight(width: number = 100, aspectRatio: 
 
   // In the case that the quotient is invalid or not a number, use the default aspect ratio.
   if (Number.isNaN(quotient)) {
-    // eslint-disable-next-line no-console
     console.log(errorMessage);
     quotient = 9 / 16;
   }

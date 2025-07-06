@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import type { BaseType, ValueFn } from 'd3';
 import type { PEdataPoint } from './dataSeriesTypes';
 
