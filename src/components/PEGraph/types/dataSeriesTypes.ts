@@ -22,7 +22,7 @@ export interface BLSWageDataPoint {
   periodName?: string,
   value: string | number,
   aspects?: [],
-  footnotes?: [{}],
+  footnotes?: [object],
 }
 
 /**

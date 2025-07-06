@@ -24,7 +24,7 @@ const wages = [
 
 describe('buildPEDataSeries', () => {
   test('returns a valid PEdataPoint array', () => {
-    // @ts-ignore Allow wage data without conforming to BLSWageData shape.
+    // @ts-expect-error Allow wage data without conforming to BLSWageData shape.
     const peDataSeries = buildPEDataSeries(homeValues, wages);
 
     expect(peDataSeries).toEqual([
@@ -76,7 +76,7 @@ describe('buildPEDataSeries', () => {
   });
 
   test('returns an empty array for an empty homeValues input', () => {
-    // @ts-ignore Allow wage data without conforming to BLSWageData shape.
+    // @ts-expect-error Allow wage data without conforming to BLSWageData shape.
     const peDataSeries = buildPEDataSeries({}, wages);
 
     expect(peDataSeries).toEqual([]);

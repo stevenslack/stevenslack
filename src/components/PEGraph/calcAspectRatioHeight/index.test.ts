@@ -24,14 +24,14 @@ describe('Test function `calcAspectRatioHeight`.', () => {
   });
 
   test('Should output correct height if width is passed as a string.', () => {
-    // @ts-ignore - Should throw an error if a string is passed.
+    // @ts-expect-error - Should throw an error if a string is passed.
     expect(calcAspectRatioHeight('100', '16:9')).toBe(56.25);
   });
 
   test('Should output the default 16:9 height if the aspect ratio is invalid.', () => {
     expect(calcAspectRatioHeight(100, ':')).toBe(56.25);
     expect(calcAspectRatioHeight(100, '')).toBe(56.25);
-    // @ts-ignore - Should throw an error if number is passed instead of a string.
+    // @ts-expect-error - Should throw an error if number is passed instead of a string.
     expect(calcAspectRatioHeight(100, 3495807)).toBe(56.25);
     expect(calcAspectRatioHeight(100, '//&:ll')).toBe(56.25);
     expect(calcAspectRatioHeight(1, '//&:luu')).toBe(0.5625);

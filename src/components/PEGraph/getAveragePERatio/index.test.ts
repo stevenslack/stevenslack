@@ -51,7 +51,7 @@ describe('getAveragePERatio', () => {
 
   test('calculates the average P/E ratio for array with a null object', () => {
     const mockCopyNull = mockData;
-    // @ts-ignore
+    // @ts-expect-error Allow null to be added to the array for testing.
     mockCopyNull.push(null);
 
     expect(() => getAveragePERatio(mockCopyNull)).toThrow(error);
@@ -59,7 +59,7 @@ describe('getAveragePERatio', () => {
 
   test('calculates the average P/E ratio for array with undefined object.', () => {
     const mockCopyUndefined = mockData;
-    // @ts-ignore
+    // @ts-expect-error Allow undefined to be added to the array for testing.
     mockCopyUndefined.push(undefined);
 
     expect(() => getAveragePERatio(mockCopyUndefined)).toThrow(error);
