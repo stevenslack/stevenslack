@@ -19,7 +19,7 @@
 }
 
 article {
-  font-size: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.683), 1.2rem)
+  font-size: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.683), 1.2rem);
 }
 
 .feather-sun {
@@ -114,7 +114,7 @@ pre > code {
   all: unset;
 }
 
-blockquote{
+blockquote {
   background: #fafafa;
   font-family: Open Sans;
   font-size: 1.4em;
@@ -126,7 +126,7 @@ blockquote{
 
   &::before {
     background: var(--dark-mode-link);
-    content: "";
+    content: '';
     height: 100%;
     left: 0;
     position: absolute;
