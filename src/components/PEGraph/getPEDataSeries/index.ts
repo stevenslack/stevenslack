@@ -7,7 +7,7 @@ import type {
   PEdataPoint,
 } from '../types/dataSeriesTypes';
 
-import housingData from '../data/avl-county-zhvi.json' assert { type: 'JSON' };
+import housingData from '../data/avl-county-zhvi.json' with { type: 'json' };
 import wagesData from '../data/bls-wages';
 
 // TODO: fetch data and use stored data if endpoint limit is reached.

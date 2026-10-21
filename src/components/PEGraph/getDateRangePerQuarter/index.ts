@@ -8,9 +8,8 @@ import quarterMonths from '../quarterMonths';
  * @returns       - An array of 2 dates from beginning to end of a quarter.
  */
 export default function getDateRangePerQuarter(year: number, quarter: QuarterKeys): Date[] {
-  let dateRange: Date[] = [new Date(), new Date()];
   // Set the date range as an array of beginning and end months for each quarter.
-  dateRange = [
+  const dateRange: Date[] = [
     new Date(year, quarterMonths[quarter][0] - 1, 1),
     new Date(year, quarterMonths[quarter][2], 0),
   ];
