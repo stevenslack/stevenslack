@@ -10,7 +10,6 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preinstall": "npx check-node-version --package",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint --ext .js,.ts .",
