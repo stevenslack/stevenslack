@@ -128,6 +128,9 @@ const seriesData: SeriesDataPoint[] = [
   { year: '2025', period: 'Q01', value: '1196' },
   { year: '2025', period: 'Q02', value: '1134' },
   { year: '2025', period: 'Q03', value: '1169' },
+  { year: '2025', period: 'Q04', value: '1239' },
+  { year: '2025', period: 'Q05', value: '1185' },
+  { year: '2026', period: 'Q01', value: '1197' },
 ];
 
 export default seriesData;
